@@ -9,7 +9,7 @@ import javax.jms.*;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 /*
- * Leitor de Linhas (2) - Produtor da Fila de Linhas.
+ * Leitor de Linhas - Produtor da Fila de Linhas.
  *
  * O Cliente inicia duas execuções deste programa: uma para as linhas pares
  * e outra para as linhas ímpares. Cada execução lê o arquivo e insere na fila

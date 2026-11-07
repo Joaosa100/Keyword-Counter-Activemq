@@ -15,7 +15,7 @@
     </properties>
 
     <dependencies>
-        <!-- Cliente JMS do ActiveMQ Classic (mesma API javax.jms usada nos exemplos da disciplina) -->
+        <!-- Cliente JMS do ActiveMQ Classic (API javax.jms) -->
         <dependency>
             <groupId>org.apache.activemq</groupId>
             <artifactId>activemq-client</artifactId>

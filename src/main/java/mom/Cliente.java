@@ -19,10 +19,10 @@ import java.util.Locale;
 import javax.swing.*;
 
 /*
- * Cliente (1) - início da aplicação.
+ * Cliente - início da aplicação.
  *
  * Solicita o arquivo de entrada e as palavras-chave e instancia duas execuções
- * do Leitor de Linhas (2): uma para as linhas pares e outra para as ímpares.
+ * do Leitor de Linhas: uma para as linhas pares e outra para as ímpares.
  * Cada leitor roda em um processo separado e só conhece o endereço do Broker.
  */
 public class Cliente extends JFrame {

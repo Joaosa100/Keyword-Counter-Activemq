@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 /*
- * Dashboard (6) - Subscriber do Tópico de Palavras.
+ * Dashboard - Subscriber do Tópico de Palavras.
  *
  * Recebe as contagens publicadas pelos Contadores e atualiza na interface
  * o total de cada palavra-chave e quantas linhas cada Contador processou.

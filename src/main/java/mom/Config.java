@@ -18,10 +18,10 @@ public final class Config {
 	public static final String URL = System.getProperty("broker.url",
 			"tcp://localhost:61616?jms.prefetchPolicy.queuePrefetch=1");
 
-	/* Fila de Linhas (3): ponto a ponto, cada linha é entregue a um único Contador */
+	/* Fila de Linhas: ponto a ponto, cada linha é entregue a um único Contador */
 	public static final String FILA_LINHAS = "FILA_LINHAS";
 
-	/* Tópico de Palavras (5): publish/subscribe, assinado pelo Dashboard */
+	/* Tópico de Palavras: publish/subscribe, assinado pelo Dashboard */
 	public static final String TOPICO_PALAVRAS = "TOPICO_PALAVRAS";
 
 	/* Propriedades enviadas junto com as mensagens */

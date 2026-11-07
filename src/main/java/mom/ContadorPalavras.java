@@ -6,7 +6,7 @@ import javax.jms.*;
 import org.apache.activemq.ActiveMQConnectionFactory;
 
 /*
- * Contador de Palavras (4) - worker.
+ * Contador de Palavras - worker.
  * É Consumidor da Fila de Linhas e Publisher do Tópico de Palavras.
  *
  * Cada worker pega a próxima linha disponível na fila, conta as palavras-chave
