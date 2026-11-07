@@ -1,36 +1,35 @@
 # Keyword-Counter-Activemq
 
-Projeto de MOM da disciplina de Programação Paralela e Distribuída (IFCE, 2026.2).
 Workflow de computação paralela que conta palavras-chave em um arquivo grande,
 com toda a comunicação feita pelo **Apache ActiveMQ** através da API **JMS**.
 
 ## Arquitetura
 
 ```
-Cliente (1)
- ├─► Leitor de linhas pares (2)   ─┐  Produtor
- └─► Leitor de linhas ímpares (2) ─┤
-                                   ▼
-                           FILA_LINHAS (3)
-                ┌──────────────────┼──────────────────┐  Consumidor
-                ▼                  ▼                  ▼
-          Contador (4)       Contador (4)       Contador (4)
-                └──────────────────┼──────────────────┘  Publisher
-                                   ▼
-                         TOPICO_PALAVRAS (5)
-                                   │  Subscriber
-                                   ▼
-                             Dashboard (6)
+Cliente
+ ├─► Leitor de linhas pares   ─┐  Produtor
+ └─► Leitor de linhas ímpares ─┤
+                               ▼
+                          FILA_LINHAS
+              ┌────────────────┼────────────────┐  Consumidor
+              ▼                ▼                ▼
+          Contador         Contador         Contador
+              └────────────────┼────────────────┘  Publisher
+                               ▼
+                        TOPICO_PALAVRAS
+                               │  Subscriber
+                               ▼
+                           Dashboard
 ```
 
-| Nº | Componente | Classe | Papel no MOM |
-|---|---|---|---|
-| 1 | Cliente | `mom.Cliente` | Interface que recebe o arquivo e as palavras-chave e inicia os dois leitores |
-| 2 | Leitor de Linhas | `mom.LeitorLinhas` | **Produtor**: envia as linhas pares ou ímpares para a fila |
-| 3 | Fila de Linhas | `FILA_LINHAS` | Fila (ponto a ponto) no Broker |
-| 4 | Contador de Palavras | `mom.ContadorPalavras` | **Consumidor** da fila e **Publisher** do tópico (workers) |
-| 5 | Tópico de Palavras | `TOPICO_PALAVRAS` | Tópico (publish/subscribe) no Broker |
-| 6 | Dashboard | `mom.Dashboard` | **Subscriber**: interface que exibe a contagem de cada palavra |
+| Componente | Classe | Papel no MOM |
+|---|---|---|
+| Cliente | `mom.Cliente` | Interface que recebe o arquivo e as palavras-chave e inicia os dois leitores |
+| Leitor de Linhas | `mom.LeitorLinhas` | **Produtor**: envia as linhas pares ou ímpares para a fila |
+| Fila de Linhas | `FILA_LINHAS` | Fila (ponto a ponto) no Broker |
+| Contador de Palavras | `mom.ContadorPalavras` | **Consumidor** da fila e **Publisher** do tópico (workers) |
+| Tópico de Palavras | `TOPICO_PALAVRAS` | Tópico (publish/subscribe) no Broker |
+| Dashboard | `mom.Dashboard` | **Subscriber**: interface que exibe a contagem de cada palavra |
 
 `mom.Config` guarda apenas o endereço do Broker e os nomes da fila e do tópico.
 Nenhum componente conhece o endereço dos outros, só o do servidor do middleware.
