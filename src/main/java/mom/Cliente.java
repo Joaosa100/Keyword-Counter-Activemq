@@ -117,8 +117,11 @@ public class Cliente extends JFrame {
 			}
 		}
 
-		/* Identificador desta execução, para o Dashboard separar uma contagem da outra */
-		String execucao = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		/*
+		 * Identificador desta execução, para o Dashboard separar uma contagem da outra.
+		 * É a data e hora de início, então execuções mais novas têm identificadores maiores.
+		 */
+		String execucao = LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss.SSS"));
 		String listaPalavras = String.join(",", palavras);
 
 		registrar("Execução " + execucao + " - palavras-chave: " + listaPalavras);
