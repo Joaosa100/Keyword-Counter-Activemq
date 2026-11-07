@@ -62,7 +62,7 @@ Nenhum componente conhece o endereço dos outros, só o do servidor do middlewar
 1. **Inicie o Broker** (na pasta onde o ActiveMQ foi extraído):
 
    ```
-   bin\activemq start
+   bin\activemq.bat start
    ```
 
    O console de administração fica em <http://localhost:8161/admin> (usuário `admin`, senha `admin`)
