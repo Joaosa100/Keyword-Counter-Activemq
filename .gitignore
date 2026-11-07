@@ -33,3 +33,6 @@ target/
 .classpath
 .project
 .settings/
+
+# Estado salvo pelo Dashboard
+dashboard-estado.properties*
