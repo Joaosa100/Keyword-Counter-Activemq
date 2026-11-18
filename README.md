@@ -34,23 +34,6 @@ Cliente
 `mom.Config` guarda apenas o endereço do Broker e os nomes da fila e do tópico.
 Nenhum componente conhece o endereço dos outros, só o do servidor do middleware.
 
-### Decisões de projeto
-
-- **Mensagens persistentes** (`DeliveryMode.PERSISTENT`): as linhas esperam na fila mesmo que
-  nenhum Contador esteja online.
-- **Assinatura durável no Dashboard** (`createDurableSubscriber`): se o Dashboard estiver fechado,
-  o Broker guarda as contagens e as entrega quando ele for aberto de novo.
-- **Prefetch 1** (`jms.prefetchPolicy.queuePrefetch=1`): o Broker entrega uma linha por vez a cada
-  Contador. Sem isso, o primeiro Contador conectado receberia até 1000 linhas de uma vez e os outros
-  ficariam ociosos.
-- **Sessão transacionada no Contador**: consumir a linha e publicar a contagem são confirmados
-  juntos (`session.commit()`). Se um Contador cair no meio, a linha volta para a fila.
-- **Número fixo de workers**: a quantidade de Contadores não depende da quantidade de linhas;
-  os mesmos workers processam o arquivo inteiro.
-- As palavras-chave seguem junto com cada linha, como propriedade da mensagem, para que os
-  Contadores não precisem guardar estado.
-- A contagem ignora maiúsculas/minúsculas e pontuação (`Java.` conta como `java`).
-
 ## Requisitos
 
 - Java 17 ou mais recente
